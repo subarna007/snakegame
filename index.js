@@ -32,16 +32,16 @@ const handleGameOver = () => {
 // Change velocity value based on key press
 
 const changeDirection = e => {
-    if (e.key === "w" && velocityY != 1) {
+    if ((e.key === "ArrowUp" || e.key.toLowerCase() === "w") && velocityY != 1) {
         velocityX = 0;
         velocityY = -1;
-    } else if (e.key === "s" && velocityY != -1) {
+    } else if ((e.key === "ArrowDown" || e.key.toLowerCase() === "s") && velocityY != -1) {
         velocityX = 0;
         velocityY = 1;
-    } else if (e.key === "a" && velocityX != 1) {
+    } else if ((e.key === "ArrowLeft" || e.key.toLowerCase() === "a") && velocityX != 1) {
         velocityX = -1;
         velocityY = 0;
-    } else if (e.key === "d" && velocityX != -1) {
+    } else if ((e.key === "ArrowRight" || e.key.toLowerCase() === "d") && velocityX != -1) {
         velocityX = 1;
         velocityY = 0;
     }
@@ -99,4 +99,4 @@ const initGame = () => {
 
 updateFoodPosition();
 setIntervalId = setInterval(initGame, 100);
-document.addEventListener("keyup", changeDirection);
+document.addEventListener("keydown", changeDirection);
